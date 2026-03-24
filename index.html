@@ -1,10 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Anjal 121</title>
+  <title>Demo Wallet</title>
 </head>
-<body style="text-align:center; font-family:sans-serif;">
-  <h1>🔥 Website Saya Berhasil Online!</h1>
-  <p>Ini Khusus Team Anjal</p>
+<body style="font-family:sans-serif; text-align:center;">
+
+  <!-- LOGIN -->
+  <div id="login">
+    <h2>Login</h2>
+    <input id="user" placeholder="Nomor HP"><br><br>
+    <input id="pass" type="password" placeholder="PIN"><br><br>
+    <button onclick="login()">Login</button>
+    <p id="error"></p>
+  </div>
+
+  <!-- HOME -->
+  <div id="home" style="display:none;">
+    <h2>Home</h2>
+    <h3>Saldo: Rp 1.000.000</h3>
+
+    <button onclick="showPage('transfer')">Transfer</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- TRANSFER -->
+  <div id="transfer" style="display:none;">
+    <h2>Transfer</h2>
+    <input placeholder="Nomor tujuan"><br><br>
+    <input placeholder="Jumlah"><br><br>
+
+    <button onclick="kirim()">Kirim</button><br><br>
+    <button onclick="showPage('home')">Kembali</button>
+  </div>
+
+  <script>
+    function login() {
+      let u = document.getElementById("user").value;
+      let p = document.getElementById("pass").value;
+
+      if (u === "08123456789" && p === "1234") {
+        showPage('home');
+      } else {
+        document.getElementById("error").innerHTML = "Login gagal";
+      }
+    }
+
+    function showPage(page) {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("home").style.display = "none";
+      document.getElementById("transfer").style.display = "none";
+
+      document.getElementById(page).style.display = "block";
+    }
+
+    function logout() {
+      showPage('login');
+    }
+
+    function kirim() {
+      alert("Transfer berhasil (ini hanya demo)");
+      showPage('home');
+    }
+  </script>
+
 </body>
 </html>
